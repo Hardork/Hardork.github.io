@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.about {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.about_bgc {
+  width: 100%;
+}
+
+.about_tit {
+  position: absolute;
+  top: 280px;
+  left: 0;
+  right: 0;
+  font-size: 28px;
+  font-weight: 550;
+  bottom: 0;
+  width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.ribbon {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  margin: auto;
+}
+
+.ribbon:after,
+.ribbon:before {
+  margin-top: 0.5em;
+  content: '';
+  display: flex;
+  border: 1.5em solid #fff;
+}
+
+.ribbon:after {
+  border-right-color: transparent;
+}
+
+.ribbon:before {
+  border-left-color: transparent;
+}
+
+.ribbon a:link,
+.ribbon a:visited {
+  color: #000;
+  text-decoration: none;
+  height: 3.5em;
+  overflow: hidden;
+}
+
+.ribbon span {
+  background: #fff;
+  display: inline-block;
+  line-height: 3em;
+  padding: 0 1.5em;
+  margin-top: 0.5em;
+  position: relative;
+  -webkit-transition: background-color 0.2s, margin-top 0.2s;
+  /* Saf3.2+, Chrome */
+  -moz-transition: background-color 0.2s, margin-top 0.2s;
+  /* FF4+ */
+  -ms-transition: background-color 0.2s, margin-top 0.2s;
+  /* IE10 */
+  -o-transition: background-color 0.2s, margin-top 0.2s;
+  /* Opera 10.5+ */
+  transition: background-color 0.2s, margin-top 0.2s;
+}
+
+.ribbon a:hover span {
+  background: #ffd204;
+  margin-top: 0;
+}
+
+.ribbon span:before {
+  content: '';
+  position: absolute;
+  top: 3em;
+  left: 0;
+  border-right: 0.5em solid #9b8651;
+  border-bottom: 0.5em solid #fff;
+}
+
+.ribbon span:after {
+  content: '';
+  position: absolute;
+  top: 3em;
+  right: 0;
+  border-left: 0.5em solid #9b8651;
+  border-bottom: 0.5em solid #fff;
+}
+
+.nr {
+  background-image: url(../img/beiji.png);
+}
+.me {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 60px; */
+  overflow: hidden;
+  align-items: center;
+}
+
+.me_tit {
+  width: 600px;
+  line-height: 36px;
+  font-size: 18px;
+  margin-left: 40px;
+  /* margin-top: 50px; */
+}
+
+.me_img {
+  width: 600px;
+  height: 400px;
+}
+
+.animate {
+  padding-left: 20px;
+  width: 620px;
+  font-size: 16px;
+  color: #000;
+  /* animation: 10s wordsLoop linear infinite normal; */
+}
+
+@keyframes wordsLoop {
+  0% {
+    transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+.videos {
+  display: flex;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.videos span {
+  width: 400px;
+  margin-right: 50px;
+  margin-left: 50px;
+  color: #b87254;
+  line-height: 240%;
+}
+footer {
+  /* margin-top: 10px; */
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #ccc;
+}
+.icon {
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  position: absolute;
+  left: 49%;
+  bottom: 50px;
+  animation: downs 2s linear infinite;
+}
+.video {
+  width: 800px;
+  height: 100%;
+}
+/* 返回顶部 */
+:root {
+  --scroll-Height: 20px; /* 滚动指定距离后，开始展示粘贴元素 */
+}
+
+.backer a:not(.backer) {
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
+  display: block;
+
+  position: sticky;
+
+  top: 0; /* 滚动条向上滚动0px后开始粘贴 */
+  top: -100px; /* 滚动条向上滚动100px后开始粘贴 */
+
+  /* 向下平移一个视口的高度，隐藏粘贴元素 */
+  transform: translateY(calc(100vh));
+
+  /* 向上滚动20px后，粘贴元素出现 */
+  transform: translateY(calc(100vh + var(--scroll-Height)));
+
+  /* 向上滚动100px后，粘贴元素被固定，这时是一半的高度露出来 */
+
+  top: -200px; /* 滚动条向上滚动200px后开始粘贴，刚好完全露出粘贴元素 */
+
+  float: right; /* 脱离文档流 + 移动到右边 */
+  margin-top: -200px; /* 自身高度， 消除float元素的文字环绕，这时粘贴元素又露出来了 */
+
+  /* 抵消上面的-200px，重新隐藏粘贴元素 */
+  transform: translateY(calc(100vh + var(--scroll-Height) + 200px)); /* 向上滚动 scroll-Height + 200 px后，粘贴元素出现 */
+  top: calc(-200px - 200px); /* 由于上面的滚动200px后，元素就已经被粘贴固定了，这时元素还不在视口可见范围，这里要加大固定时的阀值 */
+
+  /* 加点间距 */
+  margin-right: 20px;
+  top: calc(-200px - 200px - var(--scroll-Height) - 20px);
+}
+
+/* 实际应用类名 */
+.backer {
+  width: 40px;
+  height: 38px;
+  background-color: skyblue;
+  border-radius: 50%;
+  /* font-size: 32px; */
+  display: grid;
+  place-items: center;
+  position: sticky;
+  float: right;
+  margin: -200px 25px 0 0;
+  transform: translateY(calc(100vh + var(--scroll-Height) + 200px));
+  top: calc(-62px - 200px - var(--scroll-Height) - 17px);
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+/* 移动端 */
+@media screen and (max-width: 425px) {
+  .about_tit {
+    position: absolute;
+    top: 88px;
+    left: -208px;
+    font-size: 16px;
+  }
+  .ribbon {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 17px;
+    top: -8px;
+    margin: auto;
+  }
+  .ribbon span {
+    background: #fff;
+    display: inline-block;
+    line-height: 3em;
+    padding: 1px 0.5em;
+    margin-top: 0.5em;
+    position: relative;
+  }
+  .ribbon:after,
+  .ribbon:before {
+    margin-top: 0.5em;
+    content: '';
+    display: flex;
+    border: 0.5em solid #fff;
+  }
+  .icon {
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: 47%;
+    top: 138px;
+  }
+  .me {
+    display: flex;
+    margin: 5px;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+  }
+  .me_img {
+    width: 388px;
+    height: 320px;
+    margin: 5px;
+  }
+  .me_tit {
+    font-size: 18px;
+    width: 361px;
+    line-height: 17px;
+    font-size: 18px;
+    margin-left: 0;
+  }
+  .animate {
+    padding-left: 0;
+    width: 366px;
+    font-size: 16px;
+    color: #000;
+    text-indent: 2em;
+  }
+
+  .videos {
+    display: flex;
+    margin-top: 20px;
+    /* padding-bottom: 30px; */
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .video {
+    width: 388px;
+    height: 100%;
+    margin: 5px;
+  }
+
+  .videos span {
+    width: 366px;
+    margin-right: 0;
+    margin-left: 0;
+    color: #b87254;
+    text-indent: 2em;
+  }
+  .backer {
+    width: 40px;
+    height: 38px;
+    background-color: skyblue;
+    border-radius: 50%;
+    /* font-size: 32px; */
+    display: grid;
+    place-items: center;
+    position: sticky;
+    float: right;
+    margin: -200px 25px 0 0;
+    transform: translateY(calc(100vh + var(--scroll-Height) + 200px));
+    top: calc(315px - 200px - var(--scroll-Height) - 17px);
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
